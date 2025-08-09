@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.felipe.jokenpo.meujogador;
+import io.github.guisso.jankenpon.AbstractPlayer;
+import io.github.guisso.jankenpon.Move;
 
-/**
- *
- * @author felip
- */
-public class MeuJogador {
+public class MeuJogador 
+        extends AbstractPlayer{
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+  private Move minhaUltimaJogada = null;
+  
+  private int contagemGeralPedra = 0;
+  private int contagemGeralPapel = 0;
+  private int contagemGeralTesoura = 0;
+  
 }
