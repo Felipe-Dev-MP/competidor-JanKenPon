@@ -28,7 +28,10 @@ public class MeuJogador
     @Override
     public Move makeMyMove(Move opponentPreviousMove) {
 
-        if (opponentPreviousMove == Move.NONE) {
+        if (opponentPreviousMove == Move.NONE){
+            contagemGeralPedra = 0;
+            contagemGeralPapel = 0;
+            contagemGeralTesoura = 0;
             return Move.ROCK;
         }
         
