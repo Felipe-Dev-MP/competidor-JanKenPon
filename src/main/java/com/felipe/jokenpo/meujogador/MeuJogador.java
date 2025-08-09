@@ -11,45 +11,10 @@ public class MeuJogador
         return "Felipe Madureira";
     }
 
-    private int contagemGeralPedra = 0;
-    private int contagemGeralPapel = 0;
-    private int contagemGeralTesoura = 0;
+    private Move minhaUltimaJogada = null;
     
-    private Move encontrarMovimentoMaisFrequente() {
-        if (contagemGeralPedra >= contagemGeralPapel && contagemGeralPedra >= contagemGeralTesoura) {
-            return Move.ROCK;
-        } else if (contagemGeralPapel >= contagemGeralPedra && contagemGeralPapel >= contagemGeralTesoura) {
-            return Move.PAPER;
-        } else {
-            return Move.SCISSORS;
-        }
-    }
-    
-    @Override
-    public Move makeMyMove(Move opponentPreviousMove) {
-
-        if (opponentPreviousMove == Move.NONE){
-            contagemGeralPedra = 0;
-            contagemGeralPapel = 0;
-            contagemGeralTesoura = 0;
-            return Move.ROCK;
-        }
-        
-        switch (opponentPreviousMove) {
-            case ROCK:
-                contagemGeralPedra++;
-                break;
-            case PAPER:
-                contagemGeralPapel++;
-                break;
-            case SCISSORS:
-                contagemGeralTesoura++;
-                break;
-        }
-
-        Move movimentoMaisFrequente = encontrarMovimentoMaisFrequente();
-
-        switch (movimentoMaisFrequente) {
+    private Move getJogadaVencedora(Move jogada){
+        switch (jogada) {
             case ROCK:
                 return Move.PAPER;
             case PAPER:
@@ -59,5 +24,33 @@ public class MeuJogador
             default:
                 return Move.ROCK;
         }
+    }
+    
+    @Override
+    public Move makeMyMove(Move opponentPreviousMove){
+
+        if (opponentPreviousMove == Move.NONE){
+            this.minhaUltimaJogada = Move.ROCK;
+            return this.minhaUltimaJogada;
+        }
+
+        boolean euVenci = (getJogadaVencedora(opponentPreviousMove) == minhaUltimaJogada);
+        boolean empate = (minhaUltimaJogada == opponentPreviousMove);
+
+        Move minhaProximaJogada;
+
+        if(euVenci){
+            Move contraAtaqueEsperado = getJogadaVencedora(minhaUltimaJogada);
+            minhaProximaJogada = getJogadaVencedora(contraAtaqueEsperado);
+
+        }else if(empate){
+            minhaProximaJogada = getJogadaVencedora(opponentPreviousMove);
+
+        }else{
+            minhaProximaJogada = getJogadaVencedora(opponentPreviousMove);
+        }
+
+        this.minhaUltimaJogada = minhaProximaJogada;
+        return this.minhaUltimaJogada;
     }
 }
