@@ -11,7 +11,7 @@
         <exec.mainClass>com.felipe.jokenpo.meujogador.MeuJogador</exec.mainClass>
     </properties>
 
-<build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -26,7 +26,8 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>C:\\Users\\felip\\OneDrive\\Documentos\\1- Faculdade\\POO\\Jogo\\JanKenPonManager\\players</outputDirectory>
+                            <outputDirectory>C:\\dev\\projects\\javase\\JanKenPonManager\\
+                                players</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}</directory>
