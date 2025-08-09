@@ -30,7 +30,7 @@ public class MeuJogador
     public Move makeMyMove(Move opponentPreviousMove){
 
         if (opponentPreviousMove == Move.NONE){
-            this.minhaUltimaJogada = Move.ROCK;
+            this.minhaUltimaJogada = Move.SCISSORS;
             return this.minhaUltimaJogada;
         }
 
